@@ -38,3 +38,5 @@ Route::resource('store','productoController@store' );
 Route::resource('catalogo','cat_controller@show');
 
 route::resource ('editor','PruebasController');
+
+Route::resource('jugadores','JugadoresController');

@@ -39,4 +39,9 @@ Route::resource('catalogo','cat_controller@show');
 
 route::resource ('editor','PruebasController');
 
+
 Route::resource('jugadores','JugadoresController');
+
+
+Route::resource('categorias','CategoriasController');
+

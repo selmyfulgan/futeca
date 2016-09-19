@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use App\Models\Jugadores;
+use App\Models\Categorias;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 
-class JugadoresController extends Controller
+
+
+class CategoriasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +19,11 @@ class JugadoresController extends Controller
      */
     public function index()
     {
-       // dd('soy el index');
-       // $jugadores = Jugadores::where('tipo_llamada')->get();
-        $jugadores = DB::table('tm_jugador')->get();
-        dd($jugadores);
-        return view('rap.denuncia.index',compact('denuncia'));
+       $categorias= DB::table('tm_categoria')->get();
+       //dd($categorias);
+
+       return view('categorias.index',compact('categorias'));    
+
     }
 
     /**
@@ -31,9 +33,7 @@ class JugadoresController extends Controller
      */
     public function create()
     {
-        return view('jugadores.create');
-
-        
+        return view('categorias.create');
     }
 
     /**
@@ -44,26 +44,16 @@ class JugadoresController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
+        $new= new categorias;
 
-         DB::beginTransaction();
-        try{
-            $nuevo = new Jugadores;
-            $nuevo->nombres = $request->jugador;
-            $nuevo->apellidos = $request->apellidos;
-            $nuevo->fecha_nacimiento = $request->nace;
-            $nuevo->telefono = $request->tel;
-           // $nuevo->direccion = $request->direccion;
-            $nuevo->id_equipo = 1;
-            $nuevo->save();
-            
-            DB::commit();
-            dd($nuevo);
-            //return view('jugadores.index');
-        }catch (Exception $e){
-            DB::rollBack();
-            return response('Ocurrio un error, los datos no pudieron ser almacenados.',500);
-        }
+        $new->descripcion= $request->descripcion;
+        $new->genero= $request->genero;
+        $new->save();
+        return view('categorias.index');
+
+
+
+
     }
 
     /**

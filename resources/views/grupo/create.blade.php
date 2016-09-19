@@ -4,17 +4,13 @@
 <div class="col-sm-6 col-sm-offset-3">
     <div class="panel panel-info">
         <div class="panel-heading">
-            <h3 class="panel-title">Ingreso de datos categorias</h3>
+            <h3 class="panel-title">Ingreso de datos grupo</h3>
         </div>
         <div class="panel-body">
            {{ Form::open(array('route' => 'grupo.store')) }}
                 <div class="form-group">
                     <label for="descripcion">Descripcion</label>
                     <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="ingrese descripcion ">
-                </div>
-                <div class="form-group">
-                    <label for="genero">Genero</label>
-                    <input type="text" class="form-control" id="genero" name="genero" placeholder="ingrese genero">
                 </div>
             
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">

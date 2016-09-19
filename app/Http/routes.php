@@ -45,3 +45,4 @@ Route::resource('jugadores','JugadoresController');
 
 Route::resource('categorias','CategoriasController');
 
+Route::resource('grupo','GrupoController');

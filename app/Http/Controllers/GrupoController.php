@@ -50,7 +50,7 @@ class GrupoController extends Controller
 
         $new->descripcion= $request->descripcion;
         $new->save();
-        return Redirect::to('grupo');
+        return Redirect('/grupo');
 
 
     }

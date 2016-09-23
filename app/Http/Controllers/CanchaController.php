@@ -4,13 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use App\Models\Categorias;
+use App\Models\Cancha;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 
-
-
-class CategoriasController extends Controller
+class CanchaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +17,10 @@ class CategoriasController extends Controller
      */
     public function index()
     {
-       $categorias= DB::table('tm_categoria')->get();
-       //dd($categorias);
+        $cancha= DB::table('tm_cancha')->get();
+       //dd($cancha);
 
-       return view('categorias.index',compact('categorias'));    
-
+       return view('cancha.index',compact('cancha'));
     }
 
     /**
@@ -33,7 +30,7 @@ class CategoriasController extends Controller
      */
     public function create()
     {
-        return view('categorias.create');
+        return view('cancha.create');
     }
 
     /**
@@ -44,15 +41,11 @@ class CategoriasController extends Controller
      */
     public function store(Request $request)
     {
-        $new= new categorias;
+         $new= new Cancha;
 
         $new->descripcion= $request->descripcion;
-        $new->genero= $request->genero;
         $new->save();
-        return Redirect('/categorias');
-
-
-
+        return Redirect('/cancha');
 
     }
 

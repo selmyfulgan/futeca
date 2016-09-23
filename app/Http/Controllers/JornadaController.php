@@ -4,13 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use App\Models\Categorias;
+use App\Models\Jornada;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 
-
-
-class CategoriasController extends Controller
+class JornadaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +17,11 @@ class CategoriasController extends Controller
      */
     public function index()
     {
-       $categorias= DB::table('tm_categoria')->get();
-       //dd($categorias);
+         $Jornada= DB::table('Jornada')->get();
+       //dd($Jornada);
 
-       return view('categorias.index',compact('categorias'));    
-
+       return view('Jornada.index',compact('Jornada')); 
+    }
     }
 
     /**
@@ -33,7 +31,7 @@ class CategoriasController extends Controller
      */
     public function create()
     {
-        return view('categorias.create');
+        return view('Jornada.create');;
     }
 
     /**
@@ -44,16 +42,11 @@ class CategoriasController extends Controller
      */
     public function store(Request $request)
     {
-        $new= new categorias;
+         $new= new Jornada;
 
         $new->descripcion= $request->descripcion;
-        $new->genero= $request->genero;
         $new->save();
-        return Redirect('/categorias');
-
-
-
-
+        return Redirect('/Jornada');
     }
 
     /**

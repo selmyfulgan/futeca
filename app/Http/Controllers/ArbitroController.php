@@ -4,13 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use App\Models\Categorias;
+use App\Models\Arbitro;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 
-
-
-class CategoriasController extends Controller
+class ArbitroController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +17,11 @@ class CategoriasController extends Controller
      */
     public function index()
     {
-       $categorias= DB::table('tm_categoria')->get();
-       //dd($categorias);
+         // dd($arbitro);
+      $arbitro= DB::table('tm_arbitro')->get();
+     
 
-       return view('categorias.index',compact('categorias'));    
-
+       return view('arbitro.index',compact('arbitro')); 
     }
 
     /**
@@ -33,7 +31,7 @@ class CategoriasController extends Controller
      */
     public function create()
     {
-        return view('categorias.create');
+        return view('arbitro.create');
     }
 
     /**
@@ -44,15 +42,14 @@ class CategoriasController extends Controller
      */
     public function store(Request $request)
     {
-        $new= new categorias;
+        //dd($request);
+        $new= new Arbitro;
 
-        $new->descripcion= $request->descripcion;
-        $new->genero= $request->genero;
+        $new->nombre= $request->nombre;
+        $new->apellido= $request->apellido;
+        $new->estado= $request->estado;
         $new->save();
-        return Redirect('/categorias');
-
-
-
+        return Redirect('/arbitro');
 
     }
 

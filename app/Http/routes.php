@@ -46,3 +46,16 @@ Route::resource('jugadores','JugadoresController');
 Route::resource('categorias','CategoriasController');
 
 Route::resource('grupo','GrupoController');
+
+Route::resource('arbitro','ArbitroController');
+
+Route::resource('cancha','CanchaController');
+
+
+Route::resource('cliente','ClienteController');
+
+
+
+Route::resource('forma_pago','FormaPagoController');
+
+Route::resource('jornada','JornadaController');

@@ -4,13 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use App\Models\Categorias;
+use App\Models\Cliente;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 
-
-
-class CategoriasController extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +17,10 @@ class CategoriasController extends Controller
      */
     public function index()
     {
-       $categorias= DB::table('tm_categoria')->get();
-       //dd($categorias);
+        $cliente= DB::table('tm_cliente')->get();
+     
 
-       return view('categorias.index',compact('categorias'));    
-
+       return view('cliente.index',compact('cliente')); 
     }
 
     /**
@@ -33,7 +30,7 @@ class CategoriasController extends Controller
      */
     public function create()
     {
-        return view('categorias.create');
+         return view('cliente.create');
     }
 
     /**
@@ -44,15 +41,13 @@ class CategoriasController extends Controller
      */
     public function store(Request $request)
     {
-        $new= new categorias;
+         $new= new Cliente;
 
-        $new->descripcion= $request->descripcion;
-        $new->genero= $request->genero;
+        $new->nit= $request->nit;
+        $new->razon_social= $request->razon_social;
+        $new->direccion= $request->direccion;
         $new->save();
-        return Redirect('/categorias');
-
-
-
+        return Redirect('/cliente');
 
     }
 
